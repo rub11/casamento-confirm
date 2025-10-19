@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Presença</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #f5f0f9;
+            color: #4a3b5a;
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path fill="%23d8c8e8" opacity="0.3" d="M50,50 C70,30 90,40 100,60 C110,40 130,30 150,50 C170,70 160,90 140,100 C160,110 170,130 150,150 C130,170 110,160 100,140 C90,160 70,170 50,150 C30,130 40,110 60,100 C40,90 30,70 50,50 Z"/></svg>');
+            background-size: 200px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.1);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #e6d4f7, #c9a8e8, #e6d4f7);
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #8a4ebf;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .instructions {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #6d5b7a;
+            font-style: italic;
+        }
+        
+        .confirmation-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .person {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .person:hover {
+            transform: translateY(-5px);
+        }
+        
+        .person-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 5px solid #e6d4f7;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #f9f5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .person-image:hover {
+            border-color: #c9a8e8;
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
+        }
+        
+        .person-image::after {
+            content: "";
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .person-image:hover::after {
+            opacity: 1;
+        }
+        
+        .person-name {
+            font-size: 1.4rem;
+            color: #6d5b7a;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+        
+        .divider {
+            font-size: 2rem;
+            color: #c9a8e8;
+            font-weight: bold;
+            margin: 0 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .final-message {
+            font-size: 1.3rem;
+            color: #6d5b7a;
+            margin-top: 30px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .floral-decoration {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        .floral-top-left {
+            top: -30px;
+            left: -30px;
+            transform: rotate(15deg);
+        }
+        
+        .floral-bottom-right {
+            bottom: -30px;
+            right: -30px;
+            transform: rotate(195deg);
+        }
+        
+        @media (max-width: 768px) {
+            .confirmation-section {
+                flex-direction: column;
+            }
+            
+            .divider {
+                margin: 20px 0;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .person-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .person-name {
+                font-size: 1.2rem;
+            }
+            
+            .final-message {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirme sua presença com um dos noivos</h1>
+        <p class="instructions">Clique sobre a imagem desejada para confirmar sua presença</p>
+        
+        <div class="confirmation-section">
+            <div class="person">
+                <div class="person-image" id="groom-image">
+                    <!-- Imagem do noivo será inserida aqui -->
+                  <img width="100%" src="img/WhatsApp Image 2025-10-19 at 17.29.54.jpeg" alt="">
+                </div>
+                <p class="person-name">Noivo</p>
+            </div>
+            
+            <div class="divider">ou</div>
+            
+            <div class="person">
+                <div class="person-image" id="bride-image">
+                    <!-- Imagem da noiva será inserida aqui -->
+                   <img width="100%" src="img/WhatsApp Image 2025-10-19 at 17.30.33.jpeg" alt="">
+                </div>
+                <p class="person-name">Noiva</p>
+            </div>
+        </div>
+        
+        <p class="final-message">Aguardamos sua querida presença no grande dia!<br>Por favor, confirme.</p>
+        
+        <!-- Decorações florais -->
+        <div class="floral-decoration floral-top-left">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,30 C60,20 70,25 75,35 C80,45 75,55 65,60 C75,65 80,75 75,85 C70,95 60,90 50,85 C40,90 30,95 25,85 C20,75 25,65 35,60 C25,55 20,45 25,35 C30,25 40,20 50,30 Z" fill="#d8c8e8"/>
+            </svg>
+        </div>
+        <div class="floral-decoration floral-bottom-right">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,30 C60,20 70,25 75,35 C80,45 75,55 65,60 C75,65 80,75 75,85 C70,95 60,90 50,85 C40,90 30,95 25,85 C20,75 25,65 35,60 C25,55 20,45 25,35 C30,25 40,20 50,30 Z" fill="#d8c8e8"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // Números de telefone fornecidos
+        const groomPhone = "5511974793895"; // Número do noivo (11 974793895)
+        const bridePhone = "5511941240944"; // Número da noiva (+55 11 94124-0944)
+        
+        // Mensagem personalizada para WhatsApp
+        const message = encodeURIComponent("Olá! Estou confirmando minha presença no seu casamento! 💜 Estou muito animado(a) para celebrar este momento especial com vocês!");
+        
+        // Elementos de imagem
+        const groomImage = document.getElementById('groom-image');
+        const brideImage = document.getElementById('bride-image');
+        
+        // Adicionar eventos de clique
+        groomImage.addEventListener('click', function() {
+            window.open(`https://wa.me/${groomPhone}?text=${message}`, '_blank');
+        });
+        
+        brideImage.addEventListener('click', function() {
+            window.open(`https://wa.me/${bridePhone}?text=${message}`, '_blank');
+        });
+    </script>
+</body>
+</html>
